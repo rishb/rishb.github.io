@@ -1,77 +1,218 @@
-<!DOCTYPE html>
 <html>
+    <head>
+        <style>
+            .myButton {
+                -moz-box-shadow:inset 0px 0px 15px 3px #23395e;
+                -webkit-box-shadow:inset 0px 0px 15px 3px #23395e;
+                box-shadow:inset 0px 0px 15px 3px #23395e;
+                background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2e466e), color-stop(1, #415989));
+                background:-moz-linear-gradient(top, #2e466e 5%, #415989 100%);
+                background:-webkit-linear-gradient(top, #2e466e 5%, #415989 100%);
+                background:-o-linear-gradient(top, #2e466e 5%, #415989 100%);
+                background:-ms-linear-gradient(top, #2e466e 5%, #415989 100%);
+                background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e466e', endColorstr='#415989',GradientType=0);
+                background-color:#2e466e;
+                -moz-border-radius:17px;
+                -webkit-border-radius:17px;
+                border-radius:17px;
+                border:1px solid #1f2f47;
+                display:inline-block;
+                cursor:pointer;
+                color:#ffffff;
+                font-family:Arial;
+                font-size:15px;
+                padding:6px 13px;
+                margin: 10px;
+                text-decoration:none;
+                text-shadow:0px 1px 0px #263666;
+                opacity: 0.7;
+            }
+            .myButton:hover {
+                background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #415989), color-stop(1, #2e466e));
+                background:-moz-linear-gradient(top, #415989 5%, #2e466e 100%);
+                background:-webkit-linear-gradient(top, #415989 5%, #2e466e 100%);
+                background:-o-linear-gradient(top, #415989 5%, #2e466e 100%);
+                background:-ms-linear-gradient(top, #415989 5%, #2e466e 100%);
+                background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#415989', endColorstr='#2e466e',GradientType=0);
+                background-color:#415989;
+            }
+            .myButton:active {
+                position:relative;
+                top:1px;
+            }
+            body {
+                background-image: url("http://upload.wikimedia.org/wikipedia/commons/0/0e/Hong_Kong_Island_Skyline_2009.jpg");
+                -webkit-background-size: 100% auto;
+                -moz-background-size: 100% auto;
+                -ms-background-size: 100% auto;
+                -o-background-size: 100% auto;
+                background-size: 100% auto;
+            }
+            #LF1 {
+                color: black;
+                text-align: center;
+                padding: 5px;
+                width: 300px;
+                font-family: sans-serif;
+            }
+            #LF2 {
+                color: black;
+                text-align: center;
+                padding: 5px;
+                width: 300px;
+                font-family: sans-serif;
+            }
+            #topRight {
+                float: right;
+                color: rgb(0, 171, 0, 0.5);
+            }
+            .input {
+                font-family: sans-serif;
+            }
+            #chatbox {
+                float: left;
+            }
+            #searchbox {
+                float: right;
+            }
+        </style>
+        <script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="algo.js"></script>
+    </head>
+    <body>
+        <div id="topRight">
+            Not Logged In
+        </div>
+        <div id="topLeft">
+            <a href="#" id="logout" class="myButton">Log Out</a>
+        </div>
+        <center>
+            <div id="LF1">
+                <form id="loginForm">
+                    <input type="text" name="username" id="user" size="40" placeholder="Username">
+                    <br>
+                    <input type="password" name="password" id="pw" size="40" placeholder="Password">
+                    <br>
+                    <input type="text" name="fName" id="fName" size="40" placeholder="First Name">
+                    <br>
+                    <input type="text" name="lName" id="lName" size="40" placeholder="Last Name">
+                    <br>
+                </form>
+            </div>
+        </center>
+        <center>
+            <div id="LF2">
+                <form id="loginForm2">
+                    <input type="text" name="usr" id="usr" size="40" placeholder="Username">
+                    <br>
+                    <input type="password" name="pwd" id="pwd" size="40" placeholder="Password">
+                    <br>
+                </form>
+            </div>
+        </center>
+        <center>
+            <div id="buttons">
+                <a href="#" id="signupButton" class="myButton">Sign Up</a>
+                <a href="#" id="loginButton" class="myButton">Log In</a>
+            </div>
+        </center>
+        <div id="chatbox">
+            <canvas id="formCanvas2" width="600px" height="530px" style="position: absolute; z-index:4; left:470px; top:200px;"></canvas>
+            <canvas id="formCanvas3" width="600px" height="530px" style="position: absolute; z-index:4; left:470px; top:200px;"></canvas>
+        </div>
+        <div id="searchBox">
+            <canvas id="srchBox" width="102px" height="550px" style="border: 3px solid#000000; position: absolute; z-index:4; left:366px; top:200px;"></canvas>
+            <input type="text" name="search" id="search" size="15" style="z-index:5; position: absolute; left:370px; top:203px;">
+        </div>
+    </body>
+    <body>
+        <div id="container" style="border: 3px solid#000000; position: absolute; left: 470px; top:200px; height:550px; width:600px; z-index:2;">
+            <center>
+                <canvas id="formCanvas" style="height:530px; width:600px; z-index:3;"></canvas>
+            </center>
+            <center><input type="text" name="chatIn" id="chatIn" size="98" placeholder="Message"></center>
+            <center><a href="#" id="submitText" class="myButton">Submit</a></center>
+        </div>
+    </body>
+</html>
 
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Rishb.GitHub.io : ">
+<!--<!DOCTYPE html>-->
+<!--<html>-->
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+<!--  <head>-->
+<!--    <meta charset='utf-8'>-->
+<!--    <meta http-equiv="X-UA-Compatible" content="chrome=1">-->
+<!--    <meta name="description" content="Rishb.GitHub.io : ">-->
 
-    <title>Rishabh Bhatia</title>
-    <style>
-      p.small {
-        line-height: 90%;
-      }
-      p.large {
-        line-height: 200%;
-      }
-    </style>
-  </head>
+<!--    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">-->
 
-  <body>
+<!--    <title>Rishabh Bhatia</title>-->
+<!--    <style>-->
+<!--      p.small {-->
+<!--        line-height: 90%;-->
+<!--      }-->
+<!--      p.large {-->
+<!--        line-height: 200%;-->
+<!--      }-->
+<!--    </style>-->
+<!--  </head>-->
+
+<!--  <body>-->
 
     <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/rishb">View on GitHub</a>
+<!--    <div id="header_wrap" class="outer">-->
+<!--        <header class="inner">-->
+<!--          <a id="forkme_banner" href="https://github.com/rishb">View on GitHub</a>-->
 
-          <center><h1 id="project_title">Rishabh Bhatia</h1></center>
-          <h2 id="project_tagline"></h2>
+<!--          <center><h1 id="project_title">Rishabh Bhatia</h1></center>-->
+<!--          <h2 id="project_tagline"></h2>-->
 
-        </header>
-    </div>
+<!--        </header>-->
+<!--    </div>-->
 
     <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>My Projects</h3>
+<!--    <div id="main_content_wrap" class="outer">-->
+<!--      <section id="main_content" class="inner">-->
+<!--        <h3>-->
+<!--<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>My Projects</h3>-->
 
-<p>Visual Travelling Salesman Problem:<br>
-Fractal Generator:<br>
-Chat Messenger: </p>
+<!--<p>Visual Travelling Salesman Problem:<br>-->
+<!--Fractal Generator:<br>-->
+<!--Chat Messenger: </p>-->
 
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<!--<h3>-->
+<!--<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>-->
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<!--<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>-->
 
-<h3>
-<a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<!--<h3>-->
+<!--<a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>-->
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<!--<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>-->
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<!--<h3>-->
+<!--<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>-->
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<!--<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>-->
 
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<!--<h3>-->
+<!--<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>-->
 
-<p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
+<!--<p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>-->
+<!--      </section>-->
+<!--    </div>-->
 
     <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+<!--    <div id="footer_wrap" class="outer">-->
+<!--      <footer class="inner">-->
+<!--        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>-->
+<!--      </footer>-->
+<!--    </div>-->
 
     
 
-  </body>
-</html>
+<!--  </body>-->
+<!--</html>-->
