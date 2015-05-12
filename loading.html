@@ -1,0 +1,142 @@
+<html>
+    <head>
+        <style>
+            @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
+            body {
+              background: #333;
+              color: #eee;
+              font-size: 34px;
+              font-family: "Open Sans";
+            }
+
+            .wrap {
+              width: 250px;
+              text-align: center;
+              position: absolute;
+              top: 40%;
+              left: 50%;
+              margin-left: -125px;
+            }
+            .wrap div {
+              display: inline;
+              margin: -2px;
+            }
+
+            .l {
+              -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+                      animation: shrinkgrow 1.75s ease-in-out infinite;
+              -webkit-animation-delay: 0s;
+                      animation-delay: 0s;
+            }
+
+            .o {
+              -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+                      animation: shrinkgrow 1.75s ease-in-out infinite;
+              -webkit-animation-delay: 0.21875s;
+                      animation-delay: 0.21875s;
+            }
+
+            .a {
+              -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+                      animation: shrinkgrow 1.75s ease-in-out infinite;
+              -webkit-animation-delay: 0.4375s;
+                      animation-delay: 0.4375s;
+            }
+
+            .d {
+              -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+                      animation: shrinkgrow 1.75s ease-in-out infinite;
+              -webkit-animation-delay: 0.65625s;
+                      animation-delay: 0.65625s;
+            }
+
+            .i {
+              -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+                      animation: shrinkgrow 1.75s ease-in-out infinite;
+              -webkit-animation-delay: 0.875s;
+                      animation-delay: 0.875s;
+            }
+
+            .n {
+              -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+                      animation: shrinkgrow 1.75s ease-in-out infinite;
+              -webkit-animation-delay: 1.09375s;
+                      animation-delay: 1.09375s;
+            }
+
+            .g {
+              -webkit-animation: shrinkgrow 1.75s ease-in-out infinite;
+                      animation: shrinkgrow 1.75s ease-in-out infinite;
+              -webkit-animation-delay: 1.3125s;
+                      animation-delay: 1.3125s;
+            }
+
+            @-webkit-keyframes shrinkgrow {
+              0% {
+                -webkit-transform: scale(0);
+                        transform: scale(0);
+              }
+              12.5% {
+                -webkit-transform: scale(1);
+                        transform: scale(1);
+              }
+              25% {
+                -webkit-transform: scale(1);
+                        transform: scale(1);
+              }
+              33% {
+                -webkit-transform: scale(0);
+                        transform: scale(0);
+              }
+              100% {
+                -webkit-transform: scale(0);
+                        transform: scale(0);
+              }
+            }
+
+            @keyframes shrinkgrow {
+              0% {
+                -webkit-transform: scale(0);
+                        transform: scale(0);
+              }
+              12.5% {
+                -webkit-transform: scale(1);
+                        transform: scale(1);
+              }
+              25% {
+                -webkit-transform: scale(1);
+                        transform: scale(1);
+              }
+              33% {
+                -webkit-transform: scale(0);
+                        transform: scale(0);
+              }
+              100% {
+                -webkit-transform: scale(0);
+                        transform: scale(0);
+              }
+            }
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="mainPageLoad.js"></script>
+        <script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+        <script>
+            function backToStart()
+            {
+                window.open('chatPage.html','_self',false);
+            }
+            setTimeout(backToStart, 8000);
+        </script>
+    </head>
+    <body>
+        <div class="wrap">
+          <div class="l">L</div>
+          <div class="o">O</div>
+          <div class="a">A</div>
+          <div class="d">D</div>
+          <div class="i">I</div>
+          <div class="n">N</div>
+          <div class="g">G</div>
+        </div>
+    </body>
+</html>
