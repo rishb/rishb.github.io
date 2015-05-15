@@ -14,40 +14,40 @@ $(function()
         document.getElementById('vol').style.display = 'none';
         document.getElementById('time').style.display = 'none';
         document.getElementById('divYield').style.display = 'none';
-        var ctx = $("#myChart").get(0).getContext("2d");
-        var data = {
-            labels: [95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105],
-            datasets: [
-                {
-                    fillColor: "rgba(220,220,220,0)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    strokeWidth: 10,
-                    data: [-1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4]
-                },
-                {
-                    fillColor: "rgba(220,220,220,0)",
-                    strokeColor: "rgba(0,0,0,1)",
-                    strokeWidth: 4,
-                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                },
-                {
-                    fillColor: "rgba(220,220,220,0)",
-                    strokeColor: "rgba(0,0,0,0)",
-                    strokeWidth: 4,
-                    data: [-3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3]
-                }
-            ]
-        }
-        myNewChart = new Chart(ctx).Line(data, {
-            bezierCurve: false,
-            pointDot: false,
-            scaleFontColor: "#000",
-            scaleShowHorizontalLines: true
-        });
+        // var ctx = $("#myChart").get(0).getContext("2d");
+        // var data = {
+        //     labels: [95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105],
+        //     datasets: [
+        //         {
+        //             fillColor: "rgba(220,220,220,0)",
+        //             strokeColor: "rgba(220,220,220,1)",
+        //             pointColor: "rgba(220,220,220,1)",
+        //             pointStrokeColor: "#fff",
+        //             pointHighlightFill: "#fff",
+        //             pointHighlightStroke: "rgba(220,220,220,1)",
+        //             strokeWidth: 10,
+        //             data: [-1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4]
+        //         },
+        //         {
+        //             fillColor: "rgba(220,220,220,0)",
+        //             strokeColor: "rgba(0,0,0,1)",
+        //             strokeWidth: 4,
+        //             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        //         },
+        //         {
+        //             fillColor: "rgba(220,220,220,0)",
+        //             strokeColor: "rgba(0,0,0,0)",
+        //             strokeWidth: 4,
+        //             data: [-3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3]
+        //         }
+        //     ]
+        // }
+        // myNewChart = new Chart(ctx).Line(data, {
+        //     bezierCurve: false,
+        //     pointDot: false,
+        //     scaleFontColor: "#000",
+        //     scaleShowHorizontalLines: true
+        // });
     };
     $("#submit").click(function() 
     {
