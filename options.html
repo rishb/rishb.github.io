@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+    	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.js"></script>
+		<script src="Chart.js-master/Chart.js"></script>
+		<script src="optionsChart.js"></script>
+		<title> Options </title>
+		<style>
+			body {
+				margin: 0;
+				background-color: #888888;
+			}
+			.mainContainer {
+				margin: 0 auto;
+				border: 3px solid #000000;
+				margin-top: 50px;
+				width: 1000px;
+				height: 700px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mainContainer">
+			<form class="form-group">
+				<select id="instrumentType">
+					<option value="call">Call</option>
+					<option value="put">Put</option>
+				</select>
+				<select id="buyOrSell">
+					<option value="buy">Buy</option>
+					<option value="sell">Sell</option>
+				</select>
+				<select onChange="dataChange()" id="dataType">
+					<option value="payout">Payout</option>
+					<option value="delta">Delta</option>
+					<option value="gamma">Gamma</option>
+					<option value="vega">Vega</option>
+					<option value="theta">Theta</option>
+				</select>
+				<input type="number" id="riskfree" placeholder="Risk Free Rate (%)" style="width: 110px; font-size: 10px;">
+				<input type="number" id="vol" placeholder="Volatility (%)" style="width: 75px; font-size: 10px;">
+				<input type="number" id="time" placeholder="Time (Days)" style="width: 75px; font-size: 10px;">
+				<input type="number" id="divYield" placeholder="Dividend Yield (%)" style="width: 110px; font-size: 10px;">
+
+				<input type="number" id="strike" placeholder="Strike" style="width: 45px; font-size: 10px;">
+				<input type="number" id="price" step="0.01" placeholder="Price" style="width: 45px; font-size: 10px;">
+				<button type="submit" id="submit" style="font-size: 10px;">Submit</button>
+			</form>
+			<center><canvas id="myChart" width="980" height="590"></canvas></center>
+		</div>
+	</body>
+</html>
