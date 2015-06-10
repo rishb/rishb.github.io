@@ -15,6 +15,7 @@
                 text-align: left;
                 width: 1000px;
                 margin: 0 auto;
+                background-color: black;
             }
             #filterBar {
                 width: 1000px;
@@ -26,308 +27,346 @@
                 border-radius: 6px;
                 width: 280px;
                 height: 340px;
-                margin: 25px;
+                margin: 26px;
                 float: left;
+                background-color: #E2DED6;
             }
             .arrow-left {
                 width: 0; 
                 height: 0; 
                 border-top: 20px solid transparent;
                 border-bottom: 20px solid transparent; 
-                border-right: 15px solid black;
+                border-right: 15px solid grey;
             }
             .arrow-right {
                 width: 0; 
                 height: 0; 
                 border-top: 20px solid transparent;
                 border-bottom: 20px solid transparent; 
-                border-left: 15px solid black;
+                border-left: 15px solid grey;
             }
         </style>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <script src="carMain.js"></script>
+        <script src="main.js"></script>
     </head>
-    <body>
-        <div id="filterBar">
-            <div class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                Brand <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">BMW</a></li>
-                <li><a href="#">AUDI</a></li>
-                <li><a href="#">ASTON MARTIN</a></li>
-                <li><a href="#">HONDA</a></li>
-              </ul>
+    <body style="background-color: #1D2023;">
+        <div id="webPage">
+            <div id="pageTitle">
+<!--                <h1 style="color: #999999;">The Hong Kong Car Market Place</h1>-->
+                <h3 style="color: #999999;">Every used car currently on the Hong Kong market.</h3>
             </div>
-            <div class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                Year <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">BMW</a></li>
-                <li><a href="#">AUDI</a></li>
-                <li><a href="#">ASTON MARTIN</a></li>
-                <li><a href="#">HONDA</a></li>
-              </ul>
+            <div id="filterBar" style="padding-bottom: 10px;">
+                <div class="btn-group">
+                  <button id="brandToggle" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Brand <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" id="brandsMenu">
+                      <li><a href="#" id="1">1</a></li>
+                      <li><a href="#" id="2">2</a></li>
+                      <li><a href="#" id="3">3</a></li>
+                      <li><a href="#" id="4">4</a></li>
+                      <li><a href="#" id="5">5</a></li>
+                      <li><a href="#" id="6">6</a></li>
+                      <li><a href="#" id="7">7</a></li>
+                      <li><a href="#" id="8">8</a></li>
+                      <li><a href="#" id="9">9</a></li>
+                      <li><a href="#" id="10">10</a></li>
+                      <li><a href="#" id="11">11</a></li>
+                      <li><a href="#" id="12">12</a></li>
+                      <li><a href="#" id="13">13</a></li>
+                      <li><a href="#" id="14">14</a></li>
+                      <li><a href="#" id="15">15</a></li>
+                      <li><a href="#" id="16">16</a></li>
+                      <li><a href="#" id="17">17</a></li>
+                      <li><a href="#" id="18">18</a></li>
+                      <li><a href="#" id="19">19</a></li>
+                      <li><a href="#" id="20">20</a></li>
+                      <li><a href="#" id="21">21</a></li>
+                      <li><a href="#" id="22">22</a></li>
+                      <li><a href="#" id="23">23</a></li>
+                      <li><a href="#" id="24">24</a></li>
+                      <li><a href="#" id="25">25</a></li>
+                      <li><a href="#" id="26">26</a></li>
+                      <li><a href="#" id="27">27</a></li>
+                      <li><a href="#" id="28">28</a></li>
+                      <li><a href="#" id="29">29</a></li>
+                      <li><a href="#" id="30">30</a></li>
+                      <li><a href="#" id="31">31</a></li>
+                      <li><a href="#" id="32">32</a></li>
+                      <li><a href="#" id="33">33</a></li>
+                      <li><a href="#" id="34">34</a></li>
+                      <li><a href="#" id="35">35</a></li>
+                      <li><a href="#" id="36">36</a></li>
+                      <li><a href="#" id="37">37</a></li>
+                      <li><a href="#" id="38">38</a></li>
+                      <li><a href="#" id="39">39</a></li>
+                      <li><a href="#" id="40">40</a></li>
+                      <li><a href="#" id="41">41</a></li>
+                      <li><a href="#" id="42">42</a></li>
+                      <li><a href="#" id="43">43</a></li>
+                      <li><a href="#" id="44">44</a></li>
+                      <li><a href="#" id="45">45</a></li>
+                      <li><a href="#" id="46">46</a></li>
+                      <li><a href="#" id="47">47</a></li>
+                      <li><a href="#" id="48">48</a></li>
+                      <li><a href="#" id="49">49</a></li>
+                      <li><a href="#" id="50">50</a></li>
+                      <li><a href="#" id="51">51</a></li>
+                      <li><a href="#" id="52">52</a></li>
+                      <li><a href="#" id="53">53</a></li>
+                      <li><a href="#" id="54">54</a></li>
+                      <li><a href="#" id="55">55</a></li>
+                      <li><a href="#" id="56">56</a></li>
+                      <li><a href="#" id="57">57</a></li>
+                      <li><a href="#" id="58">58</a></li>
+                      <li><a href="#" id="59">59</a></li>
+                      <li><a href="#" id="60">60</a></li>
+                  </ul>
+                </div>
+                <div class="btn-group">
+                  <button id="yearToggle" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Year <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" id="yearsMenu">
+                    <li id="2015"><a href="#">2015</a></li>
+                    <li><a href="#">2014 onwards</a></li>
+                    <li><a href="#">2013 onwards</a></li>
+                    <li><a href="#">2012 onwards</a></li>
+                      <li><a href="#">2011 onwards</a></li>
+                      <li><a href="#">2010 onwards</a></li>
+                      <li><a href="#">2009 onwards</a></li>
+                      <li><a href="#">2008 onwards</a></li>
+                      <li><a href="#">2007 onwards</a></li>
+                      <li><a href="#">2006 onwards</a></li>
+                      <li><a href="#">Before 2006</a></li>
+                  </ul>
+                </div>
+                <div class="btn-group">
+                  <button id="priceToggle" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Price Range <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" id="pricesMenu">
+                    <li><a href="#">Less than $100,000</a></li>
+                      <li><a href="#">$100,000 - $199,999</a></li>
+                      <li><a href="#">$200,000 - $299,999</a></li>
+                      <li><a href="#">$300,000 - $399,999</a></li>
+                      <li><a href="#">$400,000 - $499,999</a></li>
+                      <li><a href="#">$500,000 - $749,999</a></li>
+                      <li><a href="#">$750,000 - $999,999</a></li>
+                      <li><a href="#">$1,000,000 - $1,499,999</a></li>
+                      <li><a href="#">$1,500,000 - $1,999,999</a></li>
+                      <li><a href="#">$2,000,000 or more</a></li>
+                  </ul>
+                </div>
+                <button href="#" class="btn btn-primary" role="button" id="filterBtn">Filter</button>
+                <button href="#" class="btn btn-primary" role="button" id="resetBtn">Reset</button>
             </div>
-            <div class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                Price Range <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">BMW</a></li>
-                <li><a href="#">AUDI</a></li>
-                <li><a href="#">ASTON MARTIN</a></li>
-                <li><a href="#">HONDA</a></li>
+            <nav align="center">
+              <ul class="pagination pagination-lg" id="navigator">
+                <li id="prevButton">
+                  <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li id="but1"><a href="#" id="anch1">1</a></li>
+                <li id="but2"><a href="#" id="anch2">2</a></li>
+                <li id="but3"><a href="#" id="anch3">3</a></li>
+                <li id="but4"><a href="#" id="anch4">4</a></li>
+                <li id="but5"><a href="#" id="anch5">5</a></li>
+                <li id="nextButton">
+                  <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
               </ul>
+            </nav>
+            <center><div class="alert alert-info" role="alert" style="width: 210px; margin: 0 auto;" id="mainDescrip"></div></center>
+            <div id="mainArea">
+                <div class="box" id="box1">
+                    <img id="img1" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError1();" onmouseover="imageOneHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year1"></h4>
+                          <h6 id="model1"></h6>
+                          <h5 id="price1"></h5>
+                        <p><a id="boxAnch1" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box2">
+                    <img id="img2" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError2();" onmouseover="imageTwoHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year2"></h4>
+                          <h6 id="model2"></h6>
+                          <h5 id="price2"></h5>
+                        <p><a id="boxAnch2" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box3">
+                    <img id="img3" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError3();" onmouseover="imageThreeHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year3"></h4>
+                          <h6 id="model3"></h6>
+                          <h5 id="price3"></h5>
+                        <p><a id="boxAnch3" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box4">
+                    <img id="img4" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError4();" onmouseover="imageFourHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year4"></h4>
+                          <h6 id="model4"></h6>
+                          <h5 id="price4"></h5>
+                        <p><a id="boxAnch4" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box5">
+                    <img id="img5" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError5();" onmouseover="imageFiveHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year5"></h4>
+                          <h6 id="model5"></h6>
+                          <h5 id="price5"></h5>
+                        <p><a id="boxAnch5" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box6">
+                    <img id="img6" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError6();" onmouseover="imageSixHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year6"></h4>
+                          <h6 id="model6"></h6>
+                          <h5 id="price6"></h5>
+                        <p><a id="boxAnch6" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box7">
+                    <img id="img7" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError7();" onmouseover="imageSevenHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year7"></h4>
+                          <h6 id="model7"></h6>
+                          <h5 id="price7"></h5>
+                        <p><a id="boxAnch7" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box8">
+                    <img id="img8" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError8();" onmouseover="imageEightHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year8"></h4>
+                          <h6 id="model8"></h6>
+                          <h5 id="price8"></h5>
+                        <p><a id="boxAnch8" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box9">
+                    <img id="img9" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError9();" onmouseover="imageNineHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year9"></h4>
+                        <h6 id="model9"></h6>
+                          <h5 id="price9"></h5>
+                        <p><a id="boxAnch9" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box10">
+                    <img id="img10" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError10();" onmouseover="imageTenHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year10"></h4>
+                          <h6 id="model10"></h6>
+                          <h5 id="price10"></h5>
+                        <p><a id="boxAnch10" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box11">
+                    <img id="img11" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError11();" onmouseover="imageElevenHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year11"></h4>
+                          <h6 id="model11"></h6>
+                          <h5 id="price11"></h5>
+                        <p><a id="boxAnch11" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box12">
+                    <img id="img12" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError12();" onmouseover="imageTwelveHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year12"></h4>
+                          <h6 id="model12"></h6>
+                          <h5 id="price12"></h5>
+                        <p><a id="boxAnch12" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box13">
+                    <img id="img13" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError13();" onmouseover="imageThirteenHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year13"></h4>
+                          <h6 id="model13"></h6>
+                          <h5 id="price13"></h5>
+                        <p><a id="boxAnch13" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box14">
+                    <img id="img14" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError14();" onmouseover="imageFourteenHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year14"></h4>
+                          <h6 id="model14"></h6>
+                          <h5 id="price14"></h5>
+                        <p><a id="boxAnch14" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box15">
+                    <img id="img15" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError15();" onmouseover="imageFifteenHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year15"></h4>
+                          <h6 id="model15"></h6>
+                          <h5 id="price15"></h5>
+                        <p><a id="boxAnch15" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box16">
+                    <img id="img16" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError16();" onmouseover="imageSixteenHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year16"></h4>
+                          <h6 id="model16"></h6>
+                          <h5 id="price16"></h5>
+                        <p><a id="boxAnch16" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box17">
+                    <img id="img17" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError17();" onmouseover="imageSeventeenHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year17"></h4>
+                          <h6 id="model17"></h6>
+                          <h5 id="price17"></h5>
+                        <p><a id="boxAnch17" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box18">
+                    <img id="img18" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError18();" onmouseover="imageEighteenHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year18"></h4>
+                          <h6 id="model18"></h6>
+                          <h5 id="price18"></h5>
+                        <p><a id="boxAnch18" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box19">
+                    <img id="img19" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError19();" onmouseover="imageNineteenHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year19"></h4>
+                          <h6 id="model19"></h6>
+                          <h5 id="price19"></h5>
+                        <p><a id="boxAnch19" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
+                <div class="box" id="box20">
+                    <img id="img20" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError20();" onmouseover="imageTwentyHoverOn();" onmouseout="imageOneHoverOff();">
+                    <div class="caption" align="center">
+                          <h4 id="year20"></h4>
+                          <h6 id="model20"></h6>
+                          <h5 id="price20"></h5>
+                        <p><a id="boxAnch20" href="#" class="btn btn-primary" role="button">View Listing</a></p>
+                      </div>
+                </div>
             </div>
-            <a id="boxAnch3" href="#" class="btn btn-primary" role="button">Filter</a>
         </div>
-        <nav align="center">
-          <ul class="pagination pagination-lg" id="navigator">
-            <li id="prevButton">
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li id="but1"><a href="#" id="anch1">1</a></li>
-            <li id="but2"><a href="#" id="anch2">2</a></li>
-            <li id="but3"><a href="#" id="anch3">3</a></li>
-            <li id="but4"><a href="#" id="anch4">4</a></li>
-            <li id="but5"><a href="#" id="anch5">5</a></li>
-            <li id="nextButton">
-              <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div class="alert alert-info" role="alert" style="width: 300px; text-align: left; margin: 0 auto;"><center>Click the arrows to see more pictures!</center></div>
-        <div id="mainArea">
-            <div class="box" id="box1">
-                <img id="img1" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError1();">
-                <span id="left1" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right1" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year1">YEAR</h4>
-                      <h6 id="model1">BRAND + MODEL</h6>
-                      <h5 id="price1">PRICE</h5>
-                    <p><a id="boxAnch1" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box2">
-                <img id="img2" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError2();">
-                <span id="left2" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right2" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year2">YEAR</h4>
-                      <h6 id="model2">BRAND + MODEL</h6>
-                      <h5 id="price2">PRICE</h5>
-                    <p><a id="boxAnch2" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box3">
-                <img id="img3" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError3();">
-                <span id="left3" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right3" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year3">YEAR</h4>
-                      <h6 id="model3">BRAND + MODEL</h6>
-                      <h5 id="price3">PRICE</h5>
-                    <p><a id="boxAnch3" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box4">
-                <img id="img4" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError4();">
-                <span id="left4" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right4" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year4">YEAR</h4>
-                      <h6 id="model4">BRAND + MODEL</h6>
-                      <h5 id="price4">PRICE</h5>
-                    <p><a id="boxAnch4" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box5">
-                <img id="img5" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError5();">
-                <span id="left5" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right5" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year5">YEAR</h4>
-                      <h6 id="model5">BRAND + MODEL</h6>
-                      <h5 id="price5">PRICE</h5>
-                    <p><a id="boxAnch5" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box6">
-                <img id="img6" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError6();">
-                <span id="left6" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right6" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year6">YEAR</h4>
-                      <h6 id="model6">BRAND + MODEL</h6>
-                      <h5 id="price6">PRICE</h5>
-                    <p><a id="boxAnch6" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box7">
-                <img id="img7" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError7();">
-                <span id="left7" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right7" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year7">YEAR</h4>
-                      <h6 id="model7">BRAND + MODEL</h6>
-                      <h5 id="price7">PRICE</h5>
-                    <p><a id="boxAnch7" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box8">
-                <img id="img8" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError8();">
-                <span id="left8" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right8" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year8">YEAR</h4>
-                      <h6 id="model8">BRAND + MODEL</h6>
-                      <h5 id="price8">PRICE</h5>
-                    <p><a id="boxAnch8" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box9">
-                <img id="img9" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError9();">
-                <span id="left9" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right9" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year9">YEAR</h4>
-                    <h6 id="model9">BRAND + MODEL</h6>
-                      <h5 id="price9">PRICE</h5>
-                    <p><a id="boxAnch9" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box10">
-                <img id="img10" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError10();">
-                <span id="left10" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right10" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year10">YEAR</h4>
-                      <h6 id="model10">BRAND + MODEL</h6>
-                      <h5 id="price10">PRICE</h5>
-                    <p><a id="boxAnch10" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box11">
-                <img id="img11" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError11();">
-                <span id="left11" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right11" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year11">YEAR</h4>
-                      <h6 id="model11">BRAND + MODEL</h6>
-                      <h5 id="price11">PRICE</h5>
-                    <p><a id="boxAnch11" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box12">
-                <img id="img12" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError12();">
-                <span id="left12" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right12" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year12">YEAR</h4>
-                      <h6 id="model12">BRAND + MODEL</h6>
-                      <h5 id="price12">PRICE</h5>
-                    <p><a id="boxAnch12" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box13">
-                <img id="img13" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError13();">
-                <span id="left13" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right13" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year13">YEAR</h4>
-                      <h6 id="model13">BRAND + MODEL</h6>
-                      <h5 id="price13">PRICE</h5>
-                    <p><a id="boxAnch13" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box14">
-                <img id="img14" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError14();">
-                <span id="left14" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right14" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year14">YEAR</h4>
-                      <h6 id="model14">BRAND + MODEL</h6>
-                      <h5 id="price14">PRICE</h5>
-                    <p><a id="boxAnch14" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box15">
-                <img id="img15" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError15();">
-                <span id="left15" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right15" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year15">YEAR</h4>
-                      <h6 id="model15">BRAND + MODEL</h6>
-                      <h5 id="price15">PRICE</h5>
-                    <p><a id="boxAnch15" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box16">
-                <img id="img16" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError16();">
-                <span id="left16" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right16" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year16">YEAR</h4>
-                      <h6 id="model16">BRAND + MODEL</h6>
-                      <h5 id="price16">PRICE</h5>
-                    <p><a id="boxAnch16" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box17">
-                <img id="img17" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError17();">
-                <span id="left17" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right17" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year17">YEAR</h4>
-                      <h6 id="model17">BRAND + MODEL</h6>
-                      <h5 id="price17">PRICE</h5>
-                    <p><a id="boxAnch17" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box18">
-                <img id="img18" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError18();">
-                <span id="left18" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right18" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year18">YEAR</h4>
-                      <h6 id="model18">BRAND + MODEL</h6>
-                      <h5 id="price18">PRICE</h5>
-                    <p><a id="boxAnch18" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box19">
-                <img id="img19" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError19();">
-                <span id="left19" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right19" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year19">YEAR</h4>
-                      <h6 id="model19">BRAND + MODEL</h6>
-                      <h5 id="price19">PRICE</h5>
-                    <p><a id="boxAnch19" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-            <div class="box" id="box20">
-                <img id="img20" width="278px" height="200px" style="border-top-left-radius: 6px; border-top-right-radius: 6px;" onerror="imgError20();">
-                <span id="left20" class="arrow-left" style="position: relative; top: -115px; right: 15px; float:left;"></span>
-                <span id="right20" class="arrow-right" style="position: relative; top: -115px; left: 15px; float: right;"></span>
-                <div class="caption" align="center">
-                      <h4 id="year20">YEAR</h4>
-                      <h6 id="model20">BRAND + MODEL</h6>
-                      <h5 id="price20">PRICE</h5>
-                    <p><a id="boxAnch20" href="#" class="btn btn-primary" role="button">View Listing</a></p>
-                  </div>
-            </div>
-        </div>
+        <a href="#" class="btn btn-danger" role="button" style="bottom: 10px; position: fixed;">Back To Top</a>
     </body>
 </html>

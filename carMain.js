@@ -8,12 +8,22 @@ var price = new Array()
 var images = new Array()
 var URL = new Array()
 var imgLoc = new Array()
+var everyBrand, selectedBrand, selectedYear, selectedPrice
+var origBrand, origPrice, origYear
+
+var imageOneEnd
 
 $(function() {
     window.onload = function () {
         Parse.initialize("4eC0JG6MChmwMJHrR5oupTtuhUEQcB9bdXMEEuaB", "nAe2JseluNyxynK4qS6x0IHDETh5hCMvCVU1Cr6a");
         var cars = Parse.Object.extend("Cars");
         var query = new Parse.Query(cars);
+        selectedBrand = -1;
+        selectedYear = -1;
+        selectedPrice = -1;
+        origBrand = document.getElementById("brandToggle").textContent;
+        origYear = document.getElementById("yearToggle").textContent;
+        origPrice = document.getElementById("priceToggle").textContent;
         query.count({
             success: function(number) {
                 for (var i = 0; i < 20; i++)
@@ -27,7 +37,72 @@ $(function() {
                 console.log('There was an error.');
             }
         });
+        var allBrands = Parse.Object.extend("AllBrands");
+        var brandQuery = new Parse.Query(allBrands);
+        brandQuery.find({
+            success: function(results) {
+                everyBrand = results[0].get("brands");
+                everyBrand.sort();
+//                <li><a href="#">BMW</a></li>
+                var brandsMenu = document.getElementById('brandsMenu');
+                for (var i = 0; i < everyBrand.length; i++)
+                {
+                    var tempCounter = i + 1;
+                    var stringCount = tempCounter.toString();
+                    document.getElementById(stringCount).textContent = everyBrand[i];
+                }
+                if (everyBrand.length < 60)
+                {
+                    for (var i = everyBrand.length; i < 60; i++)
+                    {
+                        var tempCounter = i + 1;
+                        var stringCount = tempCounter.toString();
+                        document.getElementById(stringCount).style.display = 'none';
+                    }
+                }
+            },
+            error: function() {
+                console.log('There was an error.');
+            }
+        });       
     };
+    $(".dropdown-menu li a").click(function(){
+      $(this).parents(".btn-group").find('.btn').html(
+      $(this).text()+" <span class=\"caret\"></span>"
+      );
+    });
+    $("#filterBtn").click(function() {
+        if (document.getElementById("brandToggle").textContent != origBrand)
+        {
+            selectedBrand = document.getElementById("brandToggle").textContent;
+            selectedBrand = selectedBrand.substring(0, selectedBrand.length - 1);
+        }
+        if (document.getElementById("yearToggle").textContent != origYear)
+        {
+            selectedYear = document.getElementById("yearToggle").textContent;
+        }
+        if (document.getElementById("priceToggle").textContent != origPrice)
+        {
+            selectedPrice = document.getElementById("priceToggle").textContent;
+        }
+        curPage = 1;
+        document.getElementById("but2").setAttribute("class", "");
+        document.getElementById("but3").setAttribute("class", "");
+        document.getElementById("but4").setAttribute("class", "");
+        document.getElementById("but5").setAttribute("class", "");
+        document.getElementById("but1").setAttribute("class", "active");
+        document.getElementById("prevButton").setAttribute("class", "disabled");
+        document.getElementById("nextButton").setAttribute("class", "");
+        document.getElementById("anch1").textContent = 1;
+        document.getElementById("anch2").textContent = 2;
+        document.getElementById("anch3").textContent = 3;
+        document.getElementById("anch4").textContent = 4;
+        document.getElementById("anch5").textContent = 5;
+        getData();
+    });
+    $("#resetBtn").click(function() {
+        location.reload();
+    });
     $("#nextButton").click(function() {
         nextButtonClicked();
         getData();
@@ -541,52 +616,238 @@ function getData()
     price = [];
     images = [];
     URL = [];
-//    http://9000cc.com/buy.php?searchtype2=CARS&filter=all&index1=1&searchtype=&string1=599GTB+FIORANO+F1&string2=
-//    http://9000cc.com/buy.php?searchtype2=CARS&filter=all&index1=1&searchtype=&string1=CALIFORNIA&string2=
-    for (var i = 0; i < 20; i++)
-    {
-        imgLoc[i] = -1;
-    }
-    if (totalNumber < 20 && curPage == 1)
-    {
-        maxPage = Math.ceil(totalNumber / 20);
-        document.getElementById("navigator").style.display = 'none';
-    }
-    else if (curPage == 1)
-    {
-        maxPage = Math.ceil(totalNumber / 20);
-        document.getElementById("but1").setAttribute("class", "active");
-        document.getElementById("prevButton").setAttribute("class", "disabled");
-    }
     var cars = Parse.Object.extend("Cars");
     var query = new Parse.Query(cars);
-    var skipNum = (curPage - 1) * 20;
-    query.descending("arrLen")
-    query.limit(20)
-    query.skip(skipNum)
-    query.find({
-        success: function(results) {
-            for (var i = 0; i < results.length; i++)
+    var conditionQuery = new Parse.Query(cars);
+    if (selectedYear != -1 || selectedBrand != -1 || selectedPrice != -1)
+    {
+        console.log('There is a condition');
+        if (selectedYear != -1)
+        {
+            var theYear = ""
+            if (selectedYear[0] == '2')
             {
-                var brandName = results[i].get("brand");
-                var modelName = results[i].get("model");
-                var prices = results[i].get("price");
-                var years = results[i].get("year");
-                var im = results[i].get("images");
-                var origLink = results[i].get("link");
-                year.push(years);
-                brand.push(brandName);
-                model.push(modelName);
-                price.push(prices);
-                images.push(im);
-                URL.push(origLink);
+                var theYear = "";
+                for (var i = 0; i < 4; i++)
+                {
+                    theYear = theYear + selectedYear[i];
+                }
+                theYear = parseInt(theYear);
+                theYear = theYear - 1;
+                conditionQuery.greaterThan("year", theYear);
             }
-            generateCars();
-        },
-        error: function() {
-            console.log('Error');
+            else
+            {
+                conditionQuery.lessThan("year", 2006);
+            }
         }
-    });
+        if (selectedBrand != -1)
+        {
+            conditionQuery.equalTo("brand", selectedBrand);
+        }
+        if (selectedPrice != -1)
+        {
+            if (selectedPrice[0] == 'L')
+            {
+                conditionQuery.lessThan("price", 100000);
+            }
+            else if (selectedPrice[1] == '1' && selectedPrice[2] != ',')
+            {
+                conditionQuery.greaterThan("price", 99999);
+                conditionQuery.lessThan("price", 200000);
+            }
+            else if (selectedPrice[1] == '1' && selectedPrice[2] == ',' && selectedPrice[3] == '0')
+            {
+                conditionQuery.greaterThan("price", 999999);
+                conditionQuery.lessThan("price", 1500000);
+            }
+            else if (selectedPrice[1] == '1' && selectedPrice[2] == ',' && selectedPrice[3] == '5')
+            {
+                conditionQuery.greaterThan("price", 1499999);
+                conditionQuery.lessThan("price", 2000000);
+            }
+            else if (selectedPrice[1] == '2' && selectedPrice[2] != ',')
+            {
+                conditionQuery.greaterThan("price", 199999);
+                conditionQuery.lessThan("price", 300000);
+            }
+            else if (selectedPrice[1] == '2' && selectedPrice[2] == ',')
+            {
+                conditionQuery.greaterThan("price", 1999999);
+            }
+            else if (selectedPrice[1] == '3')
+            {
+                conditionQuery.greaterThan("price", 299999);
+                conditionQuery.lessThan("price", 400000);
+            }
+            else if (selectedPrice[1] == '4')
+            {
+                conditionQuery.greaterThan("price", 399999);
+                conditionQuery.lessThan("price", 500000);
+            }
+            else if (selectedPrice[1] == '5')
+            {
+                conditionQuery.greaterThan("price", 499999);
+                conditionQuery.lessThan("price", 750000);
+            }
+            else if (selectedPrice[1] == '7')
+            {
+                conditionQuery.greaterThan("price", 749999);
+                conditionQuery.lessThan("price", 1000000);
+            }
+        }
+        conditionQuery.count({
+            success: function(number) {
+                totalNumber = number;
+                var startVal = ((curPage - 1) * 20) + 1;
+                var endVal = curPage * 20;
+                var textValue = "Results " + startVal.toString() + "-" + endVal.toString() + " of " + totalNumber.toString() + ".";
+                document.getElementById("mainDescrip").textContent = textValue;
+                maxPage = Math.ceil(totalNumber / 20);
+                if (totalNumber < 20 && curPage == 1)
+                {
+                    document.getElementById("navigator").style.display = 'none';
+                }
+                else if (totalNumber < 40)
+                {
+                    document.getElementById("but3").style.display = "none";
+                    document.getElementById("but4").style.display = "none";
+                    document.getElementById("but5").style.display = "none";
+                }
+                else if (totalNumber < 60)
+                {
+                    document.getElementById("but4").style.display = "none";
+                    document.getElementById("but5").style.display = "none";
+                }
+                else if (totalNumber < 80)
+                {
+                    document.getElementById("but5").style.display = "none";
+                }
+                else if (totalNumber > 80 && curPage == 1)
+                {
+                    document.getElementById("but3").style.display = "inline";
+                    document.getElementById("but4").style.display = "inline";
+                    document.getElementById("but5").style.display = "inline";
+                }
+            },
+            error: function() {
+                console.log('There was an error.');
+            }
+        });
+        var skipNum = (curPage - 1) * 20;
+        conditionQuery.descending("arrLen")
+        conditionQuery.limit(20)
+        conditionQuery.skip(skipNum)
+        conditionQuery.find({
+            success: function(results) {
+                for (var i = 0; i < results.length; i++)
+                {
+                    var brandName = results[i].get("brand");
+                    var modelName = results[i].get("model");
+                    var serverPrices = results[i].get("price");
+                    var years = results[i].get("year");
+                    var im = results[i].get("images");
+                    var origLink = results[i].get("link");
+                    var tempprices = serverPrices.toString();
+                    var prices = ''
+                    var commaCounter = 0
+                    for (var j = tempprices.length - 1; j >= 0; j--)
+                    {
+                        prices = tempprices[j] + prices;
+                        commaCounter = commaCounter + 1;
+                        if (commaCounter % 3 == 0 && j != 0)
+                        {
+                            prices = ',' + prices;
+                        }
+                    }
+                    prices = '$' + prices
+                    year.push(years);
+                    brand.push(brandName);
+                    model.push(modelName);
+                    price.push(prices);
+                    images.push(im);
+                    URL.push(origLink);
+                }
+                generateCars();
+            },
+            error: function() {
+                console.log('Error');
+            }
+        });    
+        console.log(selectedYear);
+        console.log(selectedBrand);
+        console.log(selectedPrice);
+    }
+    else
+    {
+        query.count({
+            success: function(number) {
+                totalNumber = number;
+                var startVal = ((curPage - 1) * 20) + 1;
+                var endVal = curPage * 20;
+                var textValue = "Results " + startVal.toString() + "-" + endVal.toString() + " of " + totalNumber.toString() + ".";
+                document.getElementById("mainDescrip").textContent = textValue;
+            },
+            error: function() {
+                console.log('There was an error.');
+            }
+        });
+        for (var i = 0; i < 20; i++)
+        {
+            imgLoc[i] = -1;
+        }
+        if (totalNumber < 20 && curPage == 1)
+        {
+            maxPage = Math.ceil(totalNumber / 20);
+            document.getElementById("navigator").style.display = 'none';
+        }
+        else if (curPage == 1)
+        {
+            maxPage = Math.ceil(totalNumber / 20);
+            document.getElementById("but1").setAttribute("class", "active");
+            document.getElementById("prevButton").setAttribute("class", "disabled");
+        }
+        var skipNum = (curPage - 1) * 20;
+        query.descending("arrLen")
+        query.limit(20)
+        query.skip(skipNum)
+        query.find({
+            success: function(results) {
+                for (var i = 0; i < results.length; i++)
+                {
+                    var brandName = results[i].get("brand");
+                    var modelName = results[i].get("model");
+                    var serverPrices = results[i].get("price");
+                    var years = results[i].get("year");
+                    var im = results[i].get("images");
+                    var origLink = results[i].get("link");
+                    var tempprices = serverPrices.toString();
+                    var prices = ''
+                    var commaCounter = 0
+                    for (var j = tempprices.length - 1; j >= 0; j--)
+                    {
+                        prices = tempprices[j] + prices;
+                        commaCounter = commaCounter + 1;
+                        if (commaCounter % 3 == 0 && j != 0)
+                        {
+                            prices = ',' + prices;
+                        }
+                    }
+                    prices = '$' + prices
+                    year.push(years);
+                    brand.push(brandName);
+                    model.push(modelName);
+                    price.push(prices);
+                    images.push(im);
+                    URL.push(origLink);
+                }
+                generateCars();
+            },
+            error: function() {
+                console.log('Error');
+            }
+        });
+    }
 }
 
 function generateCars()
@@ -887,5 +1148,144 @@ function prevButtonClicked()
     }
 }
 
+function imageOneHoverOn()
+{
+    localcurrent = 0
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
 
+function imageTwoHoverOn()
+{
+    localcurrent = 1
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageThreeHoverOn()
+{
+    localcurrent = 2
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageFourHoverOn()
+{
+    localcurrent = 3
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageFiveHoverOn()
+{
+    localcurrent = 4
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageSixHoverOn()
+{
+    localcurrent = 5
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageSevenHoverOn()
+{
+    localcurrent = 6
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageEightHoverOn()
+{
+    localcurrent = 7
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageNineHoverOn()
+{
+    localcurrent = 8
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageTenHoverOn()
+{
+    localcurrent = 9
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageElevenHoverOn()
+{
+    localcurrent = 10
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageTwelveHoverOn()
+{
+    localcurrent = 11
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageThirteenHoverOn()
+{
+    localcurrent = 12
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageFourteenHoverOn()
+{
+    localcurrent = 13
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageFifteenHoverOn()
+{
+    localcurrent = 14
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageSixteenHoverOn()
+{
+    localcurrent = 15
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageSeventeenHoverOn()
+{
+    localcurrent = 16
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageEighteenHoverOn()
+{
+    localcurrent = 17
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageNineteenHoverOn()
+{
+    localcurrent = 18
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+function imageTwentyHoverOn()
+{
+    localcurrent = 19
+    imageOneEnd = setInterval(imageOneHoverOnNext, 1000);
+}
+
+var localcurrent
+
+function imageOneHoverOnNext()
+{
+//    localcurrent = 0;
+    imgLoc[localcurrent] = imgLoc[localcurrent] + 1;
+    if (imgLoc[localcurrent] >= images[localcurrent].length)
+    {
+        imgLoc[localcurrent] = 0;
+    }
+    var locationImg = localcurrent + 1
+    var locationString = locationImg.toString();
+    var image = document.getElementById("img" + locationString);
+    image.setAttribute("src", images[localcurrent][imgLoc[localcurrent]]);
+}
+
+function imageOneHoverOff()
+{
+    clearInterval(imageOneEnd);
+}
 
